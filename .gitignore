@@ -5,3 +5,4 @@ db.sqlite3
 pyvenv.cfg
 .idea/
 Great_Library/__pycache__
+.env
