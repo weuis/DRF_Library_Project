@@ -10,3 +10,5 @@ books/__pycache__/
 books/migrations/__pycache__/
 users/migrations/__pycache__/
 users/__pycache__/
+borrowings/migrations/__pycache__/
+borrowings/__pycache__/
