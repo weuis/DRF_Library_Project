@@ -7,7 +7,18 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = "__all__"
 
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        rep["daily_fee"] = f"${rep['daily_fee']}"
-        return rep
+    def get_daily_fee_display(self, obj):
+        return f"${obj.daily_fee:.2f}"
+
+    def get_is_available(self, obj):
+        return obj.inventory > 0
+
+    def validate_daily_fee(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Daily fee must be non-negative.")
+        return value
+
+    def validate_inventory(self, value):
+        if value < 0:
+            raise serializers.ValidationError("Inventory must be non-negative.")
+        return value
