@@ -3,6 +3,9 @@ from books.models import Book
 
 
 class BookSerializer(serializers.ModelSerializer):
+    daily_fee_display = serializers.SerializerMethodField()
+    is_available = serializers.SerializerMethodField()
+
     class Meta:
         model = Book
         fields = "__all__"
